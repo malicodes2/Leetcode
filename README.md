@@ -1,1 +1,1 @@
-[https://leetcode.com/malicodes/] (LeetCode Profile)
+[LeetCode Profile](https://leetcode.com/malicodes/)
