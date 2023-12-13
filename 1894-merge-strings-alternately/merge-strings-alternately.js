@@ -19,4 +19,5 @@ var mergeAlternately = function(word1, word2) {
     return result.join("");
 };
 
-// Time and Space complexity O(n+m)
+// Time complexity O(n)
+// Space complexity O(1)
