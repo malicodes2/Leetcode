@@ -12,5 +12,10 @@ var arraySign = function (nums) {
             negCount++;
         }
     }
-    return negCount % 2 == 0 ? 1 : -1;
+    if (negCount % 2 == 0) {
+        return 1;
+    } 
+    else {
+        return -1;
+    }
 };
