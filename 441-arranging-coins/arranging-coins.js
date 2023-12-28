@@ -3,7 +3,7 @@
  * @return {number}
  */
 var arrangeCoins = function(n) {
-    let l = 0;
+    let l = 1;
     let r = n;
     let rows = 0;
 
