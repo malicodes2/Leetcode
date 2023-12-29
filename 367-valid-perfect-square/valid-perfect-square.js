@@ -11,7 +11,7 @@ var isPerfectSquare = function (num) {
     }
 
     while (l <= r) {
-        mid = Math.floor(l + (r - l) / 2);
+        let mid = Math.floor(l + (r - l) / 2);
         if (mid == Math.floor(num / mid) && num % mid == 0) {
             return true;
         }
