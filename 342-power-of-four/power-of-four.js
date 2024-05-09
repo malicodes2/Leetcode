@@ -3,10 +3,13 @@
  * @return {boolean}
  */
 var isPowerOfFour = function(n) {
-    for (let i = 0; i < 31; i++) {
-        if (n == Math.pow(4, i)) {
-            return true;
-        }
+    if (n <= 0) {
+        return false;
     }
-    return false;
+    
+    while (n % 4 === 0) {
+        n /= 4;
+    }
+    
+    return n === 1;
 };
