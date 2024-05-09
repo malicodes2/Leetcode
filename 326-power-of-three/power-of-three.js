@@ -2,6 +2,11 @@
  * @param {number} n
  * @return {boolean}
  */
-var isPowerOfThree = function(n) {
-    return n > 0 && (3**30 % n) == 0;
+var isPowerOfThree = function (n) {
+    for (let i = 0; i < 31; i++) {
+        if (n == Math.pow(3, i)) {
+            return true;
+        }
+    }
+    return false;
 };
