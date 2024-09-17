@@ -21,6 +21,4 @@ var findTheDifference = function(s, t) {
         }
         map.set(t[i], map.get(t[i]) - 1);
     }
-
-    return null;
 };
