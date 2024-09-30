@@ -5,7 +5,7 @@
 var minOperations = function (logs) {
     let res = 0;
 
-    for (log of logs) {
+    for (let log of logs) {
         if (log == "./") {
             continue;
         }
