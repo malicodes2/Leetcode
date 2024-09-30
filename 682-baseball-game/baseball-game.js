@@ -16,7 +16,7 @@ var calPoints = function (operations) {
             stack.pop();
         }
         else {
-            stack.push(parseInt(ops))
+            stack.push(Number(ops))
         }
     }
     return stack.reduce((a, b) => a + b, 0);
