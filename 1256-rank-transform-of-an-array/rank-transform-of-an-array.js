@@ -14,7 +14,8 @@ var arrayRankTransform = function (arr) {
 
     for (let num of sortedArr) {
         if (!map.has(num)) {
-            map.set(num, rank++);
+            map.set(num, rank);
+            rank++;
         }
     }
 
