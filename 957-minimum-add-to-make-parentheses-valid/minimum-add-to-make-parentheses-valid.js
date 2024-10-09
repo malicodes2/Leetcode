@@ -4,7 +4,7 @@
  */
 var minAddToMakeValid = function (s) {
     let bal = 0;
-    let ans = 0;
+    let missing = 0;
     for (let i = 0; i < s.length; i++) {
         if (s[i] == '(') {
             bal += 1;
@@ -13,9 +13,9 @@ var minAddToMakeValid = function (s) {
         }
         while (bal < 0) {
             bal++;
-            ans++;
+            missing++;
         }
     }
 
-    return ans + bal;
+    return missing + bal;
 };
