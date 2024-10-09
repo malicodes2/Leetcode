@@ -11,9 +11,9 @@ var minAddToMakeValid = function (s) {
         } else {
             bal -= 1;
         }
-        if (bal == -1) {
-            bal += 1;
-            ans += 1
+        while (bal <0){
+            bal++;
+            ans++;
         }
     }
 
