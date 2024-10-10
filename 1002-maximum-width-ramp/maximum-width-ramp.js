@@ -3,13 +3,15 @@
  * @return {number}
  */
 var maxWidthRamp = function (nums) {
-    // Step 1: Prepare maxRight array to store max values to the right
     let maxRight = new Array(nums.length).fill(0);
-    maxRight[nums.length - 1] = nums[nums.length - 1];
+    let i = nums.length - 1;
+    let prevMax = 0;
 
-    // Populate maxRight array
-    for (let i = nums.length - 2; i >= 0; i--) {
-        maxRight[i] = Math.max(nums[i], maxRight[i + 1]);
+    // Loop through nums in reverse and fill maxRight array
+    for (let n of nums.slice().reverse()) {
+        maxRight[i] = Math.max(n, prevMax);
+        prevMax = maxRight[i];
+        i--;
     }
 
     // Step 2: Find maximum width ramp
@@ -18,7 +20,7 @@ var maxWidthRamp = function (nums) {
 
     // Iterate through nums to find the largest ramp
     for (let right = 0; right < nums.length; right++) {
-        while (left < right && nums[left] > maxRight[right]) {
+        while (nums[left] > maxRight[right]) {
             left++;
         }
         res = Math.max(res, right - left);
