@@ -9,11 +9,10 @@ var maxKelements = function (nums, k) {
         pq.enqueue(num)
     }
     let score = 0
-    while (k) {
+    while (k--) {
         const ele = pq.dequeue()
         score += ele
         pq.enqueue(Math.ceil(ele / 3))
-        k--
     }
     return score
 };
