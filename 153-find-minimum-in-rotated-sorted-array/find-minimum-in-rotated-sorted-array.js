@@ -8,7 +8,7 @@ var findMin = function (nums) {
     let res = nums[0];
 
     while (l <= r) {
-        if (nums[l] <= nums[r]) {
+        if (nums[l] < nums[r]) {
             res = Math.min(res, nums[l]);
             break;
         }
