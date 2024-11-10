@@ -12,23 +12,24 @@
  * @return {_Node}
  */
 var copyRandomList = function (head) {
-    let oldToCopy = new Map();
+    const oldToCopy = new Map();
     oldToCopy.set(null, null);
 
     let cur = head;
-    while (cur) {
-        let copy = new Node(cur.val);
-        oldToCopy.set(cur, copy);
+    while (cur !== null) {
+        if (!oldToCopy.has(cur)) {
+            oldToCopy.set(cur, new Node(0));
+        }
+        oldToCopy.get(cur).val = cur.val;
+        if (!oldToCopy.has(cur.next)) {
+            oldToCopy.set(cur.next, new Node(0));
+        }
+        oldToCopy.get(cur).next = oldToCopy.get(cur.next);
+        if (!oldToCopy.has(cur.random)) {
+            oldToCopy.set(cur.random, new Node(0));
+        }
+        oldToCopy.get(cur).random = oldToCopy.get(cur.random);
         cur = cur.next;
     }
-
-    cur = head
-    while (cur) {
-        let copy = oldToCopy.get(cur);
-        copy.next = oldToCopy.get(cur.next);
-        copy.random = oldToCopy.get(cur.random);
-        cur = cur.next;
-    }
-
     return oldToCopy.get(head);
-};
+}
