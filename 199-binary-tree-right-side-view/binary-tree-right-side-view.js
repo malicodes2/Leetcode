@@ -12,24 +12,16 @@
  */
 var rightSideView = function (root) {
     let res = [];
-    let q = new Queue();
-    q.push(root);
+    const dfs = (node, depth) => {
+        if (!node) return;
 
-    while (!q.isEmpty()) {
-        let rightSide = null;
-        let qLen = q.size();
+        if (res.length == depth) {
+            res.push(node.val);
+        }
 
-        for (let i = 0; i < qLen; i++) {
-            let node = q.pop();
-            if (node) {
-                rightSide = node;
-                q.push(node.left);
-                q.push(node.right);
-            }
-        }
-        if (rightSide) {
-            res.push(rightSide.val);
-        }
+        dfs(node.right, depth + 1);
+        dfs(node.left, depth + 1);
     }
+    dfs(root, 0);
     return res;
 };
