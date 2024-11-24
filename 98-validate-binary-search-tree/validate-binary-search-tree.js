@@ -34,7 +34,7 @@ var isValidBST = function (root) {
 
     const queue = new Queue([[root, -Infinity, Infinity]]);
 
-    while (!queue.isEmpty()) {
+    while (queue.size() > 0) {
         const [node, left, right] = queue.pop();
 
         if (!(left < node.val && node.val < right)) {
