@@ -12,18 +12,16 @@
  */
 var inorderTraversal = function (root) {
     let res = [];
-    let visited = [];
-    let cur = root;
-
-    while (cur || visited.length > 0) {
-        while (cur) {
-            visited.push(cur);
-            cur = cur.left;
+    
+    const inorder = (curr) => {
+        if (!curr) {
+            return null;
         }
 
-        cur = visited.pop();
-        res.push(cur.val)
-        cur = cur.right;
+        inorder(curr.left);
+        res.push(curr.val);
+        inorder(curr.right);
     }
+    inorder(root);
     return res;
 };
