@@ -13,8 +13,7 @@ var kClosest = function (points, k) {
     }
 
     for (let i = 0; i < k; i++) {
-        const { element } = minHeap.dequeue();
-        const [_, x, y] = element;
+        const [_, x, y] = minHeap.dequeue().element;
         res.push([x, y]);
     }
 
