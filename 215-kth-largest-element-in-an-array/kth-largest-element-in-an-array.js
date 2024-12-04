@@ -4,15 +4,15 @@
  * @return {number}
  */
 var findKthLargest = function (nums, k) {
-    let minHeap = new MinPriorityQueue();
+    let maxHeap = new MaxPriorityQueue({ priority: (x) => x });
 
     for (const num of nums) {
-        minHeap.enqueue(num);
+        maxHeap.enqueue(num);
     }
 
-    while (minHeap.size() > k) {
-        minHeap.dequeue().element;
+    for (let i = 0; i < k - 1; i++) {
+        maxHeap.dequeue().element;
     }
 
-    return minHeap.dequeue().element;
+    return maxHeap.dequeue().element;
 };
