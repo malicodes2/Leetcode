@@ -12,18 +12,18 @@
  */
 var binaryTreePaths = function (root) {
     const ans = [];
-    const t = [];
+    const curr = [];
     const dfs = (node) => {
         if (!node) return;
 
-        t.push(node.val);
+        curr.push(node.val);
         if (!node.left && !node.right) {
-            ans.push(t.join('->'));
+            ans.push(curr.join('->'));
         } else {
             dfs(node.left);
             dfs(node.right);
         }
-        t.pop();
+        curr.pop();
     }
 
     dfs(root);
