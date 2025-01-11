@@ -4,8 +4,12 @@
  * @return {boolean}
  */
 var reportSpam = function (message, bannedWords) {
-    let hash = new Set(bannedWords);
+    let hash = new Map();
     let count = 0;
+
+    for (let word of bannedWords) {
+        hash.set(word, true);
+    }
 
     for (let i = 0; i < message.length; i++) {
         if (hash.has(message[i])) {
