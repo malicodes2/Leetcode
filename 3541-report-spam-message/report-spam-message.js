@@ -15,11 +15,9 @@ var reportSpam = function (message, bannedWords) {
         if (hash.has(message[i])) {
             count++;
         }
+
+        if (count >= 2) return true;
     }
 
-    if (count >= 2) {
-        return true;
-    } else {
-        return false;
-    }
+    return false;
 };
