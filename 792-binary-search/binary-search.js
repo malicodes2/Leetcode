@@ -3,7 +3,9 @@
  * @param {number} target
  * @return {number}
  */
-
+var search = function (nums, target) {
+    return binarySearch(nums, target, 0, nums.length);
+};
 const binarySearch = (nums, target, left, right) => {
     let mid = left + Math.floor((right - left) / 2);
 
@@ -21,6 +23,3 @@ const binarySearch = (nums, target, left, right) => {
     }
 };
 
-var search = function (nums, target) {
-    return binarySearch(nums, target, 0, nums.length);
-};
