@@ -12,7 +12,7 @@ var sortArray = function(arr) {
     return merge(left, right);
 };
 
-const merge = (first = [], second = []) => {
+const merge = (first, second) => {
     let result = [];
     let i = 0;
     let j = 0;
