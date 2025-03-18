@@ -15,6 +15,6 @@ class Solution {
     }
 
     int digits(int num) {
-        return (int) (Math.log10(num) + 1);
+        return (int) (Math.log10(num)) + 1;
     }
 }
