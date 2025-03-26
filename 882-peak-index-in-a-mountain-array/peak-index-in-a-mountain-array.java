@@ -11,6 +11,7 @@ class Solution {
                 start = mid + 1;
             }
         }
+        System.gc();
         return start;
     }
 }
