@@ -20,11 +20,6 @@ class Solution {
             }
         }
 
-        int[] result = new int[stack.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = stack.get(i); 
-        }
-
-        return result;
+        return stack.stream().mapToInt(i -> i).toArray();
     }
 }
