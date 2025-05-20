@@ -3,21 +3,15 @@ class Solution {
         ArrayList<Integer> res = new ArrayList<>();
 
         for (int num : nums) {
-            if (num < pivot) {
-                res.add(num);
-            }
+            if (num < pivot) res.add(num);
         }
 
         for (int num : nums) {
-            if (num == pivot) {
-                res.add(num);
-            }
+            if (num == pivot) res.add(num);
         }
 
         for (int num : nums) {
-            if (num > pivot) {
-                res.add(num);
-            }
+            if (num > pivot) res.add(num);
         }
 
         return res.stream().mapToInt(i -> i).toArray();
