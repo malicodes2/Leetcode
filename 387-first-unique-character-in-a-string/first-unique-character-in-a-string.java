@@ -6,8 +6,8 @@ class Solution {
             count.put(c, count.getOrDefault(c, 0) + 1);
         }
 
-        for (int i = 0; i < s.length(); i++) {
-            if(count.get(s.charAt(i)) == 1) {
+        for (int i = 0; i < s.length(); i++) { // ["l","e","e","t","c","o","d","e"]
+            if (count.get(s.charAt(i)) == 1) {
                 return i;
             }
         }
