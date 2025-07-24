@@ -1,16 +1,19 @@
 class Solution {
     public int findTheWinner(int n, int k) {
-        int initialPos = 0;
-        ArrayList<Integer> people = new ArrayList<>();
+        Deque<Integer> deque = new ArrayDeque<>();
 
         for (int i = 1; i <= n; i++) {
-            people.add(i);
+            deque.offerLast(i);
         }
 
-        while (people.size() > 1) {
-            initialPos = (initialPos + k - 1) % people.size();
-            people.remove(initialPos);
+        while (deque.size() > 1) {
+            for (int i = 1; i < k; i++) {
+                deque.offerLast(deque.pollFirst());
+            }
+
+            deque.removeFirst();
         }
-        return people.get(0);
+
+        return deque.peekFirst();
     }
 }
