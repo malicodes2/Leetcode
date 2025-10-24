@@ -3,7 +3,7 @@ class Solution {
         Arrays.sort(nums);
         List<List<Integer>> main = new ArrayList<>();
         main.add(new ArrayList<>());
-        int start = 0;
+        int start;
         int end = 0;
 
         for (int i = 0; i < nums.length; i++) {
