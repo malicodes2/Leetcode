@@ -1,17 +1,20 @@
 class Solution {
+    private List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> main = new ArrayList<>();
-        main.add(new ArrayList<>());
+        List<Integer> temp = new ArrayList<>();
 
-        for (int num : nums) {
-            int n = main.size();
-            for (int i = 0; i < n; i++) {
-                List<Integer> internal = new ArrayList<>(main.get(i));
-                internal.add(num);
-                main.add(internal);
-            }
+        solve(nums, 0, temp);
+        return result;
+    }
+
+    private void solve(int[] nums, int i, List<Integer> temp) {
+        if (i >= nums.length) {
+            result.add(new ArrayList<>(temp));
+            return;
         }
-
-        return main;
+        temp.add(nums[i]);
+        solve(nums, i + 1, temp);
+        temp.remove(temp.size() - 1);
+        solve(nums, i + 1, temp);
     }
 }
