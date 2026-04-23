@@ -10,29 +10,52 @@
  * }
  */
 public class Solution {
-    public ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return null;
-        }
-
-        ListNode slow = head;
+    public int lengthCycle(ListNode head) {
+        int length = 0;
         ListNode fast = head;
+        ListNode slow = head;
 
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
 
-            if (slow == fast) {
-                slow = head;
+            if (fast == slow) {
+                // calculate the length
+                ListNode temp = slow;
+                do {
+                    temp = temp.next;
+                    length++;
+                } while (temp != slow);
 
-                while (slow != fast){
-                    slow = slow.next;
-                    fast = fast.next;
-                }
-                return slow;
+                return length;
             }
         }
 
-        return null;
+        return 0;
+    }
+
+    public ListNode detectCycle(ListNode head) {
+
+        int length = lengthCycle(head);
+
+        if  (length == 0) {
+            return null;
+        }
+
+        // find the start node
+        ListNode f = head;
+        ListNode s = head;
+
+        while (length > 0) {
+            s = s.next;
+            length--;
+        }
+
+        // keep moving both forward and they'll meet at start of the cycle
+        while (f != s) {
+            f = f.next;
+            s = s.next;
+        }
+        return f;
     }
 }
