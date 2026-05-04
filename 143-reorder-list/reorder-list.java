@@ -10,38 +10,58 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+        if (head == null || head.next == null) {
+            return;
+        }
 
-        // Step 1: Find the middle of the linked list
+        ListNode mid = middleNode(head);
+        ListNode firstHead = head;
+        ListNode secondHead = reverseList(mid);
+
+        // rearrange
+        while (firstHead != null && secondHead != null) {
+            ListNode temp = firstHead.next;
+            firstHead.next = secondHead;
+            firstHead = temp;
+
+            temp = secondHead.next;
+            secondHead.next = firstHead;
+            secondHead = temp;
+        }
+
+        // next of tail to null
+        if (firstHead != null) {
+            firstHead.next = null;
+        }
+    }
+
+    private ListNode middleNode(ListNode head) {
+        ListNode fast = head;
         ListNode slow = head;
-        ListNode fast = head.next;
+
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
+        return slow;
+    }
 
-        // Step 2: Reverse the second half of the linked list
-        ListNode second = slow.next;
-        slow.next = null;
+    private ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return head;
+        }
         ListNode prev = null;
-        // Reversing:
-        while (second != null) {
-            ListNode temp = second.next;
-            second.next = prev;
-            prev = second;
-            second = temp;
-        }
-        
-        // Step 3: Merge the two halves
-        ListNode first = head;
-        second = prev;
+        ListNode present = head;
+        ListNode next = present.next;
 
-        while (second != null) {
-            ListNode temp1 = first.next;
-            ListNode temp2 = second.next;
-            first.next = second;
-            second.next = temp1;
-            first = temp1;
-            second = temp2;
+        while (present != null) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if (next != null) {
+                next = next.next;
+            }
         }
+        return prev;
     }
 }
